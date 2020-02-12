@@ -775,6 +775,7 @@
                         <form action="{{route('user.destroy',$user->id)}}" metho="post">
                         	@csrf
                         	@method('delete')
+                        	<button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                       </td>
                      
