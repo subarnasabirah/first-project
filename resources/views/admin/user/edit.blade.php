@@ -717,12 +717,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">User List</h1>
+            <h1 class="m-0 text-dark">Edit User</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User List</li>
+              <li class="breadcrumb-item active">Edit User</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -733,67 +733,81 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-         
-          <div class="col-md-12">
-            <div class="card">
+         <div class="row">
+          <!-- left column -->
+          <div class="offset-3 col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">All Users</h3>
-
-                <div class="card-tools">
-                  <ul class="pagination pagination-sm float-right">
-                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                  </ul>
-                </div>
+                <h3 class="card-title">Add New User</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body p-0">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>name</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-                      <th>Actions</th>
-      
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach($users as $user)
+              <!-- form start -->
+              <form role="form" action="{{route('user.update', $user->id)}}" method="post">
+              	@csrf
+              	@method('put')
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" value="{{$user->name}}" class="form-control" id="name" placeholder="Enter user Name">
+                    @error('name')
+    					       <div class="alert alert-danger">{{ $message }}</div>
+					           @enderror
+                  </div>
 
-                    <tr>
-                     <td>{{$user->id}}</td>
-                     <td>{{$user->name}}</td>
-                     <td>{{$user->email}}</td>
-                     <td>{{$user->phone}}</td>
-                      <td>
-                      	<a href="{{route('user.edit',$user->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                        <form action="{{route('user.destroy',$user->id)}}" metho="post">
-                        	@csrf
-                        	@method('delete')
-                        </form>
-                      </td>
-                     
-                    </tr>
+                  <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" name="email" value="{{$user->email}}" class="form-control" id="email" placeholder="Enter email">
+                    @error('email')
+    					       <div class="alert alert-danger">{{ $message }}</div>
+					          @enderror
 
+                  </div>
 
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" name="phone" value="{{$user->phone}}" class="form-control" id="phone" placeholder="Enter phone number">
+                    @error('phone')
+    					       <div class="alert alert-danger">{{ $message }}</div>
+					          @enderror
 
+                  </div>
 
-                    @endforeach
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" name="password"  class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    @error('password')
+    					       <div class="alert alert-danger">{{ $message }}</div>
+					          @enderror
+
+                  </div>
+
+                  <div class="form-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" name="password_confirmation"  class="form-control" id="confirm_password" placeholder="Confirm Password">
+         
+
+                  </div>
+                  
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
             </div>
             <!-- /.card -->
 
+            <!-- Form Element sizes -->
             
+            </div>
             <!-- /.card -->
+
           </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          
+          <!--/.col (right) -->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
