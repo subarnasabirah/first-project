@@ -14,44 +14,7 @@
                 @csrf
                 @method('put')
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" value="{{$user->name}}" class="form-control" id="name" placeholder="Enter user Name">
-                    @error('name')
-                     <div class="alert alert-danger">{{ $message }}</div>
-                     @enderror
-                  </div>
-
-                  <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" name="email" value="{{$user->email}}" class="form-control" id="email" placeholder="Enter email">
-                    @error('email')
-                     <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-
-                  </div>
-
-                  <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="text" name="phone" value="{{$user->phone}}" class="form-control" id="phone" placeholder="Enter phone number">
-                    @error('phone')
-                     <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-
-                  </div>
-
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" name="password"  class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    @error('password')
-                     <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
-
-                  </div>
-
-                  <div class="form-group">
-                    <label for="confirm_password">Confirm Password</label>
-                    <input type="password" name="password_confirmation"  class="form-control" id="confirm_password" placeholder="Confirm Password">
+                  @include('admin.user._form')
          
 
                   </div>
