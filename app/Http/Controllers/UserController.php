@@ -16,7 +16,8 @@ class UserController extends Controller
     public function index()
     {
         $data['title'] = 'List of Users';
-        $data['users'] = User::paginate(1);
+        $data['users'] = User::paginate(2);
+        $data['serial'] = ($data['users']->currentPage() != 1)?($data['users']->perPage()*($data['users']->currentPage()-1))+1:1;
         return view('admin.user.index',$data);
     }
 
@@ -75,7 +76,7 @@ class UserController extends Controller
         $data['title'] = 'Edit User';
         $data['user'] = $user;
         return view('admin.user.edit',$data);
-        
+
     }
 
     /**
@@ -91,9 +92,9 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
             'phone' => 'required|unique:users,phone,'.$user->id
-            
+
         ]);
-        
+
 
         $user->update($request->all());
         session()->flash('message','user update successfully');
