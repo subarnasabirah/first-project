@@ -22,6 +22,7 @@
         	<div class="col-sm-6">
             <h1 class="m-0 text-dark">{{$title}}</h1>
           </div>
+         
           @yield('breadcrumb')
         </div>
       </div><!-- /.container-fluid -->
@@ -32,6 +33,7 @@
     <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
+         @include('layouts.admin._message')
         @yield('content')
         
         <!-- /.row (main row) -->

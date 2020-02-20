@@ -49,7 +49,8 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
 
         User::create($data);
-        return redirect()->route('admin.user.index');
+        session()->flash('message', 'user created successfully');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -95,7 +96,8 @@ class UserController extends Controller
         
 
         $user->update($request->all());
-        return redirect()->route('admin.user.index');
+        session()->flash('message','user update successfully');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -107,6 +109,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('admin.user.index');
+        session()->flash('message','user deleted successfully');
+        return redirect()->route('user.index');
     }
 }

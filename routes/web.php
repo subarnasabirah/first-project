@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard',function(){
-	return view('admin.dashboard');
+	$data['title'] ='Dashboard';
+	return view('admin.dashboard',$data);
 })->name('dashboard');
 
 Route::resource('user','UserController');
