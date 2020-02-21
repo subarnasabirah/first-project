@@ -12,8 +12,8 @@
 @section('content')
 
           <div class="col-md-12">
-          	
-          	
+
+
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">All Users</h3>
@@ -28,14 +28,14 @@
                       <th>Email</th>
                       <th>Phone</th>
                       <th>Actions</th>
-      
+
                     </tr>
                   </thead>
                   <tbody>
                     @foreach($users as $user)
 
                     <tr>
-                     <td>{{$user->id}}</td>
+                     <td>{{$serial++}}</td>
                      <td>{{$user->name}}</td>
                      <td>{{$user->email}}</td>
                      <td>{{$user->phone}}</td>
@@ -47,7 +47,7 @@
                         	<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You confirm?')">Delete</button>
                         </form>
                       </td>
-                     
+
                     </tr>
 
 
