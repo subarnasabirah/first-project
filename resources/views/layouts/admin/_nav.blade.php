@@ -31,9 +31,9 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-      
+
           </li>
-          
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -56,10 +56,36 @@
                   <p>Create New User</p>
                 </a>
               </li>
-             
+
             </ul>
           </li>
-          
+
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+               Categories
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('category.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('category.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create a New Category</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

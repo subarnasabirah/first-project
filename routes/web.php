@@ -20,4 +20,5 @@ Route::get('dashboard',function(){
 	return view('admin.dashboard',$data);
 })->name('dashboard');
 
-Route::resource('user','UserController');
+Route::resource('user','UserController')->except(['show']);
+Route::resource('category','CategoryController')->except(['show']);
