@@ -15,12 +15,13 @@ class CreateAuthorsTable extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->text('address');
-            $table->string('photo')->nullable();
-            $table->string('total_post');
+            $table->string('name',100);
+            $table->string('email')->unique();
+            $table->string('phone',15)->unique();
+            $table->text('address')->nullable();
+            $table->text('photo')->nullable();
+            $table->integer('total_post')->default(0);
+            $table->enum('status',['Active','Inactive'])->default('Active');
             $table->timestamps();
         });
     }

@@ -26,10 +26,7 @@
                         <th style="width: 10px">#</th>
                         <th>Name</th>
                         <th>Email Address</th>
-                        <th>Phone Number</th>
-                        <th>Address</th>
-                        <th>Photo</th>
-                        <th>Total Post</th>
+                        <th>Status</th>
                         <th>Actions</th>
 
                     </tr>
@@ -41,10 +38,7 @@
                             <td>{{$serial++}}</td>
                             <td>{{$author->name}}</td>
                             <td>{{$author->email}}</td>
-                            <td>{{$author->phone}}</td>
-                            <td>{{$author->address}}</td>
-                            <td>{{$author->photo}}</td>
-                            <td>{{$author->total_post}}</td>
+                            <td>{{$author->status}}</td>
                             <td>
                                 <a href="{{route('author.edit',$author->id)}}" class="btn btn-primary btn-sm">Edit</a>
                                 <form action="{{route('author.destroy',$author->id)}}" method="post">

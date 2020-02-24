@@ -41,11 +41,11 @@ class AuthorController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
+            'email' => 'required|email|unique:authors',
+            'phone' => 'required|unique:authors',
+            'status' => 'required'
             //'photo' => 'required|mimes:jpeg,jpg,png,PNG,JPG,JPEG|max:1000',
-            'total_post' => 'required'
+
         ]);
         Author::create($request->all());
         session()->flash('message','Author Created Successfully');
@@ -87,11 +87,10 @@ class AuthorController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
+            'email' => 'required|email|unique:authors,email,'.$author->email,
+            'phone' => 'required|unique:authors,phone,' .$author->phone,
+            'status' => 'required'
             //'photo' => 'required|mimes:jpeg,jpg,png,PNG,JPG,JPEG|max:1000',
-            'total_post' => 'required'
         ]);
         $author->update($request->all());
         session()->flash('message','Author Updated Successfully');

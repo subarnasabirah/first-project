@@ -26,31 +26,26 @@
 
 <div class="form-group">
     <label for="address">Address</label>
-    <textarea  name="address"  class="form-control" id="address" row="10" placeholder="Enter your address">{{ old('address',isset($author)?$author->address:null) }}</textarea>
+    <textarea  name="address"  class="form-control" id="address" cols="30" rows="3" placeholder="Enter your address">{{ old('address',isset($author)?$author->address:null) }}</textarea>
     @error('address')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
 </div>
 
-<div class="form-group">
-    <label for="photo">Photo</label>
-    <input type="file" name="photo" value="{{ old('photo',isset($author)?$author->photo:null) }}"  id="photo">
-    @error('photo')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
 
-</div>
+
 
 <div class="form-group">
-    <label for="total_post">Total Post</label>
-    <input type="text" name="total_post" value="{{ old('total_post',isset($author)?$author->total_post:null) }}" class="form-control" id="total_post" placeholder="Total Post">
-    @error('total_post')
+    <label for="status">Status</label><br>
+    <input type="radio" @if(old('status',isset($author)?$author->status:null) == 'Active') checked @endif name="status" id="active" value="Active">
+    <label for="active">Active</label>
+    <input type="radio" @if(old('status',isset($author)?$author->status:null) == 'Inactive') checked @endif name="status" id="inactive" value="Inactive">
+    <label for="inactive">Inactive</label>
+    @error('status')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-
 </div>
-
 
 
 

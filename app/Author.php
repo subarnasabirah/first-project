@@ -12,6 +12,7 @@ class Author extends Model
        'phone',
        'address',
        'photo',
-       'total_post'
+       'total_post',
+       'status'
    ];
 }

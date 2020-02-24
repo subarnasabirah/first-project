@@ -20,7 +20,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Add New User</h3>
+                <h3 class="card-title">Edit User</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -29,10 +29,10 @@
                 @method('put')
                 <div class="card-body">
                   @include('admin.user._form')
-         
+
 
                   </div>
-                  
+
                 <!-- /.card-body -->
 
                 <div class="card-footer">
@@ -43,7 +43,7 @@
             <!-- /.card -->
 
             <!-- Form Element sizes -->
-            
+
             </div>
             <!-- /.card -->
 

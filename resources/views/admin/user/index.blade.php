@@ -24,7 +24,7 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>name</th>
+                      <th>Name</th>
                       <th>Email</th>
                       <th>Phone</th>
                       <th>Actions</th>
