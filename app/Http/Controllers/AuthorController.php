@@ -65,7 +65,9 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        //
+        $data['title'] = "Author Details";
+        $data['author'] = $author;
+        return view('admin.author.show',$data);
     }
 
     /**
@@ -93,13 +95,16 @@ class AuthorController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:authors,email,'.$author->email,
-            'phone' => 'required|unique:authors,phone,' .$author->phone,
+            'phone' => 'required|unique:authors,phone,'.$author->phone,
             'status' => 'required'
             //'photo' => 'required|mimes:jpeg,jpg,png,PNG,JPG,JPEG|max:1000',
         ]);
         $data = $request->all();
         if($request->photo){
             $data['photo'] = $this->fileUpload($request->photo);
+            if($author->photo && file_exists($author->photo)){
+                unlink($author->photo);
+            }
 
         }
         $author->update($data);
@@ -123,6 +128,9 @@ class AuthorController extends Controller
      */
     public function destroy(Author $author)
     {
+        if($author->photo && file_exists($author->photo)){
+            unlink($author->photo);
+        }
         $author->delete();
         session()->flash('message','Author Deleted Successfully');
         return redirect()->route('author.index');
