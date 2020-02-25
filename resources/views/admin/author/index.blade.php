@@ -41,7 +41,7 @@
                             <td>{{$author->status}}</td>
                             <td>
                                 <a href="{{route('author.edit',$author->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                                <form action="{{route('author.destroy',$author->id)}}" method="post">
+                                <form action="{{route('author.destroy',$author->id)}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are You confirm?')">Delete</button>

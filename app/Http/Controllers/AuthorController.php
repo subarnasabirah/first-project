@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class AuthorController extends Controller
 {
@@ -47,7 +48,11 @@ class AuthorController extends Controller
             //'photo' => 'required|mimes:jpeg,jpg,png,PNG,JPG,JPEG|max:1000',
 
         ]);
-        Author::create($request->all());
+        $data = $request->all();
+        if($request->photo){
+            $data['photo'] = $this->fileUpload($request->photo);
+        }
+        Author::create($data);
         session()->flash('message','Author Created Successfully');
         return redirect()->route('author.index');
     }
@@ -81,7 +86,7 @@ class AuthorController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Author  $author
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Author $author)
     {
@@ -92,9 +97,22 @@ class AuthorController extends Controller
             'status' => 'required'
             //'photo' => 'required|mimes:jpeg,jpg,png,PNG,JPG,JPEG|max:1000',
         ]);
-        $author->update($request->all());
+        $data = $request->all();
+        if($request->photo){
+            $data['photo'] = $this->fileUpload($request->photo);
+
+        }
+        $author->update($data);
         session()->flash('message','Author Updated Successfully');
         return redirect()->route('author.index');
+    }
+
+    private function fileUpload($img)
+    {
+        $path = 'images/authors';
+        $img->move($path,$img->getClientOriginalName());
+        $fullPath = $path. '/' .$img->getClientOriginalName();
+        return $fullPath;
     }
 
     /**
